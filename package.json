@@ -1,0 +1,24 @@
+{
+  "name": "instinct",
+  "version": "1.0.0",
+  "description": "Unofficial WhatsApp CLI built on Baileys: send, read and chat from your terminal",
+  "keywords": [
+    "whatsapp",
+    "baileys",
+    "cli"
+  ],
+  "author": "imbjdd",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "wa": "./wa.js"
+  },
+  "dependencies": {
+    "baileys": "^7.0.0-rc14",
+    "pino": "^10.4.0",
+    "qrcode-terminal": "^0.12.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
