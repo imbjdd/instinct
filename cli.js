@@ -159,7 +159,7 @@ async function connect({ onMessages, onSocket, onStatus = err, persistent = fals
         const code = lastDisconnect?.error?.output?.statusCode
         if (code === DisconnectReason.loggedOut) {
           fs.rmSync(AUTH_DIR, { recursive: true, force: true })
-          const e = new Error('Session was logged out by WhatsApp. Run `wa login` again.')
+          const e = new Error('Session was logged out by WhatsApp. Run `instinct login` again.')
           if (!settled) return reject(e)
           err(e.message)
           process.exit(1)
@@ -279,7 +279,7 @@ const commands = {
 
   async send({ rest }) {
     const text = rest.join(' ').trim()
-    if (!text) throw new Error('Usage: wa send "message"')
+    if (!text) throw new Error('Usage: instinct send "message"')
     const { sock } = await connect()
     const sent = await sock.sendMessage(TARGET_PN, { text })
     addMessages([sent], () => true)
@@ -317,12 +317,12 @@ const commands = {
 }
 
 const usage = `Usage:
-  wa login                 Link your account (QR code)
-  wa send "message"        Send a message to ${TARGET_LABEL}
-  wa read [--limit N]      Show the last N messages (default 10)
-  wa listen                Print new messages in real time
-  wa tui                   Interactive chat
-  wa logout                Unlink this device`
+  instinct login             Link your account (QR code)
+  instinct send "message"    Send a message to ${TARGET_LABEL}
+  instinct read [--limit N]  Show the last N messages (default 10)
+  instinct listen            Print new messages in real time
+  instinct tui               Interactive chat
+  instinct logout            Unlink this device`
 
 const [cmd, ...argv] = process.argv.slice(2)
 const run = commands[cmd]

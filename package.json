@@ -11,7 +11,7 @@
   "license": "MIT",
   "type": "module",
   "bin": {
-    "wa": "./wa.js"
+    "instinct": "./cli.js"
   },
   "dependencies": {
     "baileys": "^7.0.0-rc14",
